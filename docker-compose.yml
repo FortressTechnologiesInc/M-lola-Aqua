@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: mlola
+      POSTGRES_PASSWORD: mlola_pass
+      POSTGRES_DB: mlola_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    env_file: ./backend/.env.example
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/usr/src/app
+    command: sh -c "npm run dev"
+
+  frontend:
+    build: ./frontend
+    env_file: ./frontend/.env.example
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+    command: sh -c "npm run dev"
+
+volumes:
+  db-data:
