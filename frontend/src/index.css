@@ -1,0 +1,46 @@
+:root{
+  --golden-brown: #b8864b;
+  --light-sky: rgba(135,206,250,0.12);
+}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, Arial;
+  background: linear-gradient(180deg, var(--golden-brown), #a9743a);
+  color:#111;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+.watermark {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 220px;
+  height: 220px;
+  opacity: 0.08;
+  background-image: url('/src/assets/watermark.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+.app-shell {
+  max-width: 1100px;
+  margin: 24px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.horizontal-tabs {
+  display:flex;
+  gap:8px;
+  border-bottom:1px solid #eee;
+  overflow:auto;
+}
+.tab {
+  padding:10px 16px;
+  cursor:pointer;
+  background: var(--light-sky);
+  border-radius:8px 8px 0 0;
+}
